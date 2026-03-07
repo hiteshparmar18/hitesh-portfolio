@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme */
+    --background: 0 0% 98%;
+    --background-section: 210 20% 96%;
+    --foreground: 214 33% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 214 33% 10%;
+    --card-border: 214 20% 90%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 33% 10%;
+    
+    --primary: 187 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 80% 60%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 12% 45%;
+    
+    --accent: 187 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 187 100% 35%;
+    
+    --radius: 1rem;
+    
+    /* Custom tokens */
+    --glow-primary: 0 0 20px hsl(187 100% 35% / 0.2);
+    --glow-secondary: 0 0 20px hsl(240 80% 60% / 0.2);
+  }
+
+  .dark {
+    /* AI Portfolio Dark Theme */
+    --background: 214 33% 6%;
+    --background-section: 218 35% 10%;
+    --foreground: 210 17% 92%;
+    
+    --card: 0 0% 100% / 0.04;
+    --card-foreground: 210 17% 92%;
+    --card-border: 0 0% 100% / 0.08;
+    
+    --popover: 218 35% 10%;
+    --popover-foreground: 210 17% 92%;
+    
+    --primary: 187 100% 45%;
+    --primary-foreground: 214 33% 6%;
+    
+    --secondary: 240 100% 74%;
+    --secondary-foreground: 210 17% 92%;
+    
+    --muted: 218 35% 10%;
+    --muted-foreground: 210 12% 65%;
+    
+    --accent: 187 100% 45%;
+    --accent-foreground: 214 33% 6%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.08;
+    --ring: 187 100% 45%;
+    
+    /* Custom tokens */
+    --glow-primary: 0 0 20px hsl(187 100% 45% / 0.3);
+    --glow-secondary: 0 0 20px hsl(240 100% 74% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card backdrop-blur-sm border border-card-border rounded-2xl;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow-primary);
+  }
+
+  .section-container {
+    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-bg {
+    @apply bg-background-section;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium 
+           bg-primary text-primary-foreground hover:opacity-90 
+           transition-all duration-300 hover:shadow-[var(--glow-primary)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium 
+           border border-primary text-primary hover:bg-primary/10 
+           transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-primary transition-colors duration-200 text-sm font-medium;
+  }
+
+  .social-icon {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center 
+           text-muted-foreground hover:text-primary hover:bg-primary/10 
+           transition-all duration-300;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium;
+  }
+
+  .timeline-line {
+    @apply absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary/20;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
